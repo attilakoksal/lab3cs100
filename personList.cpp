@@ -13,7 +13,7 @@ PersonList::PersonList(){
 
 PersonList::~PersonList(){
     for(int i = 0; i < numPeople; i++){
-        delete theList[i];
+        delete theList[i]; // deallocate each 
     }
     delete [] theList;
 }

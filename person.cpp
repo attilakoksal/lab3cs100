@@ -6,18 +6,18 @@ using std::cout;
 using std::endl;
 
 Person::Person(const char *name_, Person* father_, Person* mother_){
-    name = new char[strlen(name_) + 1];
+    name = new char[strlen(name_) + 1]; // declared with new
     strcpy(name, name_);
     father = father_;
     mother = mother_;
     capacity = 1;
     numChildren = 0;
-    children = new Person*[capacity];
+    children = new Person*[capacity]; // declared with new
 }
 
 Person::~Person(){
-    delete [] children;
-    delete [] name;
+    delete [] children; // allocated in heap
+    delete [] name; // allocated in heap
 }
 
 void Person::addChild(Person *newChild){
@@ -53,7 +53,7 @@ void Person::printLineage(char dir, int level){
             father->printLineage(dir, level + 1);
         }
     }
-    delete [] temp;
+    delete [] temp; // delete correspondig temp pointer from compute_relation
 }
 
 /* helper function to compute the lineage
