@@ -16,9 +16,6 @@ Person::Person(const char *name_, Person* father_, Person* mother_){
 }
 
 Person::~Person(){
-    for(int i = 0; i < numChildren; i++){
-        delete children[i];
-    }
     delete [] children;
     delete [] name;
 }
@@ -71,8 +68,10 @@ char* Person::compute_relation(int level){
     for(int i = 2; i <= level; i++){
         char *temp2 = new char[strlen("great ") + strlen(temp) + 1];
         strcat(strcpy(temp2, "great "), temp);
+        delete [] temp; // if you dont delete it, the temp will slide off to the side and the temp is created withinn the for loop
         temp = temp2;
     }
+    
     return temp;
 }
 
